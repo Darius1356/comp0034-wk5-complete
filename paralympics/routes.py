@@ -327,3 +327,4 @@ def login():
 
     # Return the token and the user_id of the logged in user
     return make_response(jsonify({"user_id": user.id, "token": token}), 201)
+
