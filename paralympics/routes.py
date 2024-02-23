@@ -265,9 +265,7 @@ def register():
     # Get the JSON data from the request
     user_json = request.get_json()
     # Check if user already exists, returns None if the user does not exist
-    user = db.session.execute(
-        db.select(User).filter_by(email=user_json.get("email"))
-    ).scalar_one_or_none()
+    user = db.session.execute(db.select(User).filter_by(email=user_json.get("email"))).scalar_one_or_none()
     if not user:
         try:
             # Create new User object
