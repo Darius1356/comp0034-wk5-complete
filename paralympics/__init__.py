@@ -35,7 +35,9 @@ ma = Marshmallow()
 
 
 def create_app(test_config=None):
-    # Configure logging https://flask.palletsprojects.com/en/3.0.x/logging/#logging
+    # Configure logging
+    # See https://flask.palletsprojects.com/en/3.0.x/logging/#logging
+    # and https://betterstack.com/community/guides/logging/how-to-start-logging-with-flask/
     dictConfig({
         'version': 1,
         'formatters': {'default': {
@@ -63,7 +65,8 @@ def create_app(test_config=None):
         # Generate your own SECRET_KEY using python secrets
         SECRET_KEY='l-tirPCf1S44mWAGoWqWlA',
         # configure the SQLite database, relative to the app instance folder
-        SQLALCHEMY_DATABASE_URI="sqlite:///" + os.path.join(app.instance_path, 'paralympics.sqlite')
+        SQLALCHEMY_DATABASE_URI="sqlite:///" + os.path.join(app.instance_path, 'paralympics.sqlite'),
+        SQLALCHEMY_ECHO=True
     )
 
     app.logger.info("The app is starting...")

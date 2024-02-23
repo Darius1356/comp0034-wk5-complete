@@ -37,6 +37,10 @@ def app():
     # clean up / reset resources
     # Delete the test database (if adding data to your database takes a long time you may prefer not to delete the
     # database)
+    with app.app_context():
+        # Close the database session
+        db.session.remove()
+        db.engine.dispose()
     os.unlink(db_path)
 
 
